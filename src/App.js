@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux'
+import myApp from './State/reducers'
 import Header from './Components/Header/Header';
 import logo from './logo.svg';
 import { withQuery } from 'react-prismic';
 import './App.css';
+
+let store = createStore(myApp);
+
+// Every time the state changes, log it
+// Note that subscribe() returns a function for unregistering the listener
+let unsubscribe = store.subscribe(() =>
+  console.log('unsubscribing the store state ', store.getState())
+)
 
 class App extends Component {
 
@@ -24,6 +34,7 @@ class App extends Component {
           <Header
             data={this.props.prismic.results}
             setActivePage={setActivePage}
+            store={store}
           />
         }
         <div className="app-content">

@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { changePage } from '../../State/actions';
+
 
 class Header extends Component {
 
   render() {
     // destructure variables from props
-    const { data, setActivePage } = this.props;
+    const { data, setActivePage, store } = this.props;
 
     const changePages = (page) => {
-      setActivePage(page);
-      console.log('header state ', this.state);
+      store.dispatch(changePage(page)); 
     }
     return (
       <div className="Header">
