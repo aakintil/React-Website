@@ -11,10 +11,19 @@ let store = createStore(myApp);
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 let unsubscribe = store.subscribe(() =>
-  console.log('unsubscribing the store state ', store.getState())
+console.log('unsubscribing the store state ', store.getState())
 )
 
 class App extends Component {
+
+  componentWillMount() {
+    const prismicData = {};
+    const x = withQuery({
+      url: 'https://aderinsola.prismic.io/api',
+      query: ["", {}]
+    });
+    console.log("component will mount... ", withQuery);
+  }
 
   // creating state variable to control current page and other transitions
   constructor(props) {
@@ -33,7 +42,6 @@ class App extends Component {
         { prismic.results &&
           <Header
             data={this.props.prismic.results}
-            setActivePage={setActivePage}
             store={store}
           />
         }

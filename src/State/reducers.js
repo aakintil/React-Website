@@ -2,8 +2,8 @@ import { changePage } from './actions';
 
 
 const initialState = {
-  page: 'about',
-  data: []
+  slug: 'about',
+  id: 'WSyPiyUAAM1BjSfI'
 }
 
 const app = ( state = initialState, action ) => {

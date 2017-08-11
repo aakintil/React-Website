@@ -9,8 +9,15 @@ class Header extends Component {
     const { data, setActivePage, store } = this.props;
 
     const changePages = (page) => {
-      store.dispatch(changePage(page)); 
+      store.dispatch(changePage(page));
     }
+
+    const stuff = () => {
+      return store.getState();
+    }
+
+    console.log(stuff());
+    
     return (
       <div className="Header">
         <div className="logo">
