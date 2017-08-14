@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux'
+import { withQuery } from 'react-prismic';
 import myApp from './State/reducers'
+import Page from './Components/Page/Page';
 import Header from './Components/Header/Header';
 import logo from './logo.svg';
-import { withQuery } from 'react-prismic';
 import './App.css';
 
 let store = createStore(myApp);
@@ -11,19 +12,10 @@ let store = createStore(myApp);
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 let unsubscribe = store.subscribe(() =>
-  console.log('unsubscribing the store state ', store.getState())
+console.log('unsubscribing the store state ', store.getState())
 )
 
 class App extends Component {
-
-  componentWillMount() {
-    const p = {};
-    const x = withQuery({
-      url: 'https://aderinsola.prismic.io/api',
-      query: ["", {}]
-    })(p);
-    console.log("component will mount... ");
-  }
 
   // creating state variable to control current page and other transitions
   constructor(props) {
@@ -32,34 +24,35 @@ class App extends Component {
   }
 
   render() {
-    const { prismic, data } = this.props;
+    // props
+    const { prismicData } = this.props;
+
+    // dispatchers
     const setActivePage = (page) => {
       this.setState({ activePage: page });
-      console.log("app state ", this.state);
+      //console.log("app state ", this.state);
     }
-    return (
-      <div
-        className="App"
-        data={data}>
-        { prismic.results &&
-          <Header
-            data={this.props.prismic.results}
-            store={store}
-          />
-        }
-        <div className="app-content">
 
+    // component
+    return (
+      <div className="App">
+        <Header
+          data={prismicData}
+          store={store}
+        />
+
+        {/*  make a component */}
+        <div className="app-content">
+          <h5>content</h5>
         </div>
 
+        {/*  make a component */}
         <div className="app-footer">
-
+          <h5>footer</h5>
         </div>
       </div>
     );
   }
 }
 
-export default withQuery({
-  url: 'https://aderinsola.prismic.io/api',
-  query: ["", {}]
-})(App);
+export default App;

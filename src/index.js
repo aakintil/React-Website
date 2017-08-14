@@ -5,5 +5,5 @@ import App from './App';
 import PrismicWrapper from './Components/Prismic/PrismicWrapper';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<PrismicWrapper/>, document.getElementById('root'));
 registerServiceWorker();

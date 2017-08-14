@@ -6,22 +6,24 @@ class Header extends Component {
 
   render() {
     // destructure variables from props
-    const { data, setActivePage, store } = this.props;
+    const {
+      data,
+      setActivePage,
+      store
+    } = this.props;
 
     const changePages = (page) => {
       store.dispatch(changePage(page));
     }
 
-    const stuff = () => {
+    const showInitialState = () => {
       return store.getState();
     }
 
-    console.log(stuff());
-    
     return (
       <div className="Header">
         <div className="logo">
-          <p> center test </p>
+          <p> ade </p>
         </div>
         <ul className="navigation">
           {
@@ -40,8 +42,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-// export default withQuery({
-//   url: 'https://aderinsola.prismic.io/api',
-//   query: ["", {}]
-// })(Header);
