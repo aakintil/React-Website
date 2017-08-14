@@ -6,7 +6,10 @@ import { dataRetrieved } from '../../State/actions';
 import appReducers from '../../State/reducers';
 import App from '../../App';
 
-let store = createStore(appReducers);
+let store = createStore(
+  appReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 

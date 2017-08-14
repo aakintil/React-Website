@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { setActivePage } from '../../State/actions';
+import { connect } from 'react-redux';
+import { dataRetrieved, setActivePage } from '../../State/actions';
+import appReducers from '../../State/reducers';
 
 
 class Header extends Component {
@@ -7,19 +9,23 @@ class Header extends Component {
   render() {
     // destructure variables from props
     const {
-      data
+      data,
+      getState,
+      onClick,
+      activePage
     } = this.props;
 
-    const { store } = this.context;
 
-    const setPage = (page) => {
-      store.dispatch(setActivePage(page));
-      console.log("changing state ", store.getState())
-    }
+    // const { store } = this.context;
 
-    const showInitialState = () => {
-      return store.getState();
-    }
+    // const setPage = (page) => {
+    //   store.dispatch(setActivePage(page));
+    //   console.log("changing state ", store.getState())
+    // }
+    //
+    // const showInitialState = () => {
+    //   return store.getState();
+    // }
 
     return (
       <div className="Header">
@@ -30,7 +36,10 @@ class Header extends Component {
           {
             data.map( function(document) {
               return (<li
-                onClick={() => { setPage(document)}}
+                style={{
+                  textDecoration: document.slug === activePage.slug ? 'underline' : 'none'
+                }}
+                onClick={() => { onClick(document) }}
                 key={ document.id }>
                 <a href="#" className="link">{document.slug}</a>
               </li>);
@@ -42,4 +51,23 @@ class Header extends Component {
   }
 }
 
-export default Header;
+
+//
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick: (page) => { // if you don't return a function, then the DOM calls SET_ACTIVE_PAGE xx times
+    dispatch(setActivePage(page));
+  }
+}
+}
+
+// have to make sure that components are 'listening' and know when state changes
+// collecting any variable / object within the state object
+const mapStateToProps = (state) => {
+  return {
+    activePage: state.activePage,
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

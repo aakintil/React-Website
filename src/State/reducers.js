@@ -2,9 +2,10 @@ import { changePage } from './actions';
 
 
 const initialState = {
-  data: [],
+  data: '',
   loading: true,
-  indexPage: {}
+  indexPage: 'about',
+  activePage: ''
 }
 
 const app = ( state = initialState, action ) => {
