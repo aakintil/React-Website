@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { changePage } from '../../State/actions';
+import { setActivePage } from '../../State/actions';
 
 
 class Header extends Component {
@@ -8,12 +8,12 @@ class Header extends Component {
     // destructure variables from props
     const {
       data,
-      setActivePage,
       store
     } = this.props;
 
-    const changePages = (page) => {
-      store.dispatch(changePage(page));
+    const setPage = (page) => {
+      store.dispatch(setActivePage(page));
+      console.log("changing state ", store.getState())
     }
 
     const showInitialState = () => {
@@ -29,7 +29,7 @@ class Header extends Component {
           {
             data.map( function(document) {
               return (<li
-                onClick={() => { changePages(document)}}
+                onClick={() => { setPage(document)}}
                 key={ document.id }>
                 <a href="#" className="link">{document.slug}</a>
               </li>);

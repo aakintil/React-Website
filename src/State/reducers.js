@@ -2,19 +2,26 @@ import { changePage } from './actions';
 
 
 const initialState = {
-  slug: 'about',
-  id: 'WSyPiyUAAM1BjSfI'
+  data: [],
+  loading: true,
+  indexPage: {}
 }
 
 const app = ( state = initialState, action ) => {
 
   switch( action.type ) {
-    case 'SET_PAGE':
+    case 'SET_ACTIVE_PAGE':
     return Object.assign( {}, state, {
-      page: action.page,
-      data: action.page.data,
-      id: action.page.id,
-      slug: action.page.slug
+      activePage: action.activePage,
+      id: action.activePage.id,
+      slug: action.activePage.slug
+    })
+
+    case 'DATA_RETRIEVED':
+    return Object.assign( {}, state, {
+      data: action.data,
+      loading: action.loading,
+      indexPage: action.indexPage
     })
     default:
     return state;
