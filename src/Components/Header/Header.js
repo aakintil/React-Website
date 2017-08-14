@@ -7,9 +7,10 @@ class Header extends Component {
   render() {
     // destructure variables from props
     const {
-      data,
-      store
+      data
     } = this.props;
+
+    const { store } = this.context;
 
     const setPage = (page) => {
       store.dispatch(setActivePage(page));
@@ -23,7 +24,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="logo">
-          <p> ade </p>
+          {/* <p> ade </p> */}
         </div>
         <ul className="navigation">
           {

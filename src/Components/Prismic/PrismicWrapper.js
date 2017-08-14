@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { withQuery } from 'react-prismic';
-import appReducers from '../../State/reducers'
-import { dataRetrieved } from '../../State/actions'
+import { dataRetrieved } from '../../State/actions';
+import appReducers from '../../State/reducers';
 import App from '../../App';
 
 let store = createStore(appReducers);
@@ -38,7 +39,10 @@ class PrismicWrapper extends Component {
       <div className="PrismicWrapper">
         {
           prismic.results &&
-          <App prismicData={prismic.results} store={store}/>
+          // so that all children have access to store
+          <Provider store={store}>
+            <App prismicData={prismic.results}/>
+          </Provider>
         }
         {
           // have to build a better loading screen / animation screen
