@@ -5,7 +5,7 @@ const initialState = {
   data: '',
   loading: true,
   indexPage: 'about',
-  activePage: ''
+  activePage: 'about'
 }
 
 const app = ( state = initialState, action ) => {
@@ -14,8 +14,6 @@ const app = ( state = initialState, action ) => {
     case 'SET_ACTIVE_PAGE':
     return Object.assign( {}, state, {
       activePage: action.activePage,
-      id: action.activePage.id,
-      slug: action.activePage.slug
     })
 
     case 'DATA_RETRIEVED':

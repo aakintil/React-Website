@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header';
+import Content from './Components/Content/Content';
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,12 +15,10 @@ class App extends Component {
     // component
     return (
       <div className="App">
-        <Header data={prismicData} />
+        <Header/>
 
         {/*  make a component */}
-        <div className="app-content">
-          <h5>content</h5>
-        </div>
+        <Content/>
 
         {/*  make a component */}
         <div className="app-footer">

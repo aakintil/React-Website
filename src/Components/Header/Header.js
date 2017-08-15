@@ -9,37 +9,28 @@ class Header extends Component {
   render() {
     // destructure variables from props
     const {
+      activePage,
       data,
       getState,
       onClick,
-      activePage
     } = this.props;
-
-
-    // const { store } = this.context;
-
-    // const setPage = (page) => {
-    //   store.dispatch(setActivePage(page));
-    //   console.log("changing state ", store.getState())
-    // }
-    //
-    // const showInitialState = () => {
-    //   return store.getState();
-    // }
 
     return (
       <div className="Header">
         <div className="logo">
           {/* <p> ade </p> */}
         </div>
+
+        {/*  turn into a component -- Navbar */}
         <ul className="navigation">
           {
             data.map( function(document) {
               return (<li
-                style={{
-                  textDecoration: document.slug === activePage.slug ? 'underline' : 'none'
+                style={{ // write better styles later
+                  textDecoration: document.slug === activePage ? 'underline' : 'none'
                 }}
-                onClick={() => { onClick(document) }}
+                // if you don't return a function, then the DOM calls SET_ACTIVE_PAGE xx times
+                onClick={() => { onClick(document.slug) }}
                 key={ document.id }>
                 <a href="#" className="link">{document.slug}</a>
               </li>);
@@ -52,13 +43,13 @@ class Header extends Component {
 }
 
 
-//
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (page) => { // if you don't return a function, then the DOM calls SET_ACTIVE_PAGE xx times
-    dispatch(setActivePage(page));
+    onClick: (page) => {
+      dispatch(setActivePage(page));
+    }
   }
-}
 }
 
 // have to make sure that components are 'listening' and know when state changes
@@ -66,6 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     activePage: state.activePage,
+    data: state.data,
   }
 }
 

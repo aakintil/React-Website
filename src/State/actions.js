@@ -24,11 +24,9 @@ export const dataRetrieved = (data, loading, indexPage) => {
 }
 
 
-export const setActivePage = (activePage, id, slug) => {
+export const setActivePage = (activePage) => {
   return {
     type: SET_ACTIVE_PAGE,
-    activePage: activePage,
-    id: id,
-    slug: slug
+    activePage: activePage
   };
 }
