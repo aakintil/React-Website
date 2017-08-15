@@ -1,6 +1,3 @@
-import { changePage } from './actions';
-
-
 const initialState = {
   data: '',
   loading: true,

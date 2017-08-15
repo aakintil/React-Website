@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header';
 import Content from './Components/Content/Content';
-import logo from './logo.svg';
 import './App.css';
 
 
@@ -10,7 +9,7 @@ class App extends Component {
   render() {
     // props
     const { prismicData } = this.props;
-
+    console.log(prismicData)
     // const state = store.getState();
     // component
     return (

@@ -13,6 +13,8 @@ class Content extends Component {
       data,
       onClick,
     } = this.props;
+
+
     const getActivePageData = () => {
       let pageData = '';
       data.map( (document) => {
@@ -26,6 +28,7 @@ class Content extends Component {
 
     const page = getActivePageData();
 
+    // const { data } = page;
 
     const structurePageData = () => {
       // we have to go through an organize this data too
@@ -34,15 +37,19 @@ class Content extends Component {
         callout: '',
         category: '',
         description: '',
-        title: ''
+        title: '',
+        skilss: '',
+        processBlock: [
+          {
+            processType: '',
+            processTitle: '',
+            processCopy: ''
+          }
+        ],
       }
     }
 
     console.log( getActivePageData() );
-
-    const {
-      title
-    } = data;
 
     return (
       <div className="app-content">
@@ -52,20 +59,20 @@ class Content extends Component {
         </div>
 
         <div className="callout" // a shitty way to show the html in the values
-          dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} }
-        />
+        dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} }
+      />
 
-        <div className="description">
-          {page.data['project-pages.description'].value[0].text}
-        </div>
-
-        <div className="category">
-          {page.data['project-pages.category'].value[0].text}
-        </div>
-
+      <div className="description">
+        {page.data['project-pages.description'].value[0].text}
       </div>
-    );
-  }
+
+      <div className="category">
+        {page.data['project-pages.category'].value[0].text}
+      </div>
+
+    </div>
+  );
+}
 }
 
 

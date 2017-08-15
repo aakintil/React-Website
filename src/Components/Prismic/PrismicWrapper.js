@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { withQuery } from 'react-prismic';
+import { withQuery, Predicates } from 'react-prismic';
 import { dataRetrieved } from '../../State/actions';
 import appReducers from '../../State/reducers';
 import App from '../../App';
