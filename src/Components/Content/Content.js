@@ -58,21 +58,27 @@ class Content extends Component {
           {page.data['project-pages.title'].value[0].text}
         </div>
 
-        <div className="callout" // a shitty way to show the html in the values
-        dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} }
-      />
+        {/* // a shitty way to show the html in the values */}
+        <div className="callout" />
+        {/* dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} } */}
+        <h5>description</h5>
+        { page.getText('project-pages.description') }
+        <h5>callout</h5>
+        { page.getStructuredText('project-pages.callout').asHtml()}
+        <div/>
 
-      <div className="description">
-        {page.data['project-pages.description'].value[0].text}
+        <div className="description">
+          <h5>description</h5>
+          {page.data['project-pages.description'].value[0].text}
+        </div>
+
+        <div className="category">
+          {page.data['project-pages.category'].value[0].text}
+        </div>
+
       </div>
-
-      <div className="category">
-        {page.data['project-pages.category'].value[0].text}
-      </div>
-
-    </div>
-  );
-}
+    );
+  }
 }
 
 
