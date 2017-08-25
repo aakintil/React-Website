@@ -1,17 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { dataRetrieved, setActivePage } from '../../State/actions';
-import appReducers from '../../State/reducers';
+import { setActivePage } from '../../State/actions';
 
 
 class Header extends Component {
+  static propTypes = {
+    activePage: PropTypes.string,
+    data: PropTypes.array,
+    onClick: PropTypes.func, // eslint-disable-line
+  }
 
   render() {
     // destructure variables from props
     const {
       activePage,
       data,
-      getState,
       onClick,
     } = this.props;
 
@@ -32,7 +36,7 @@ class Header extends Component {
                 // if you don't return a function, then the DOM calls SET_ACTIVE_PAGE xx times
                 onClick={() => { onClick(document.slug) }}
                 key={ document.id }>
-                <a href="#" className="link">{document.slug}</a>
+                <a href="##" className="link">{document.slug}</a>
               </li>);
             })
           }

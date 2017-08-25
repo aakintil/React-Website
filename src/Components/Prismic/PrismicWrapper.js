@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { withQuery, Predicates } from 'react-prismic';
+import { withQuery } from 'react-prismic';
 import { dataRetrieved } from '../../State/actions';
 import appReducers from '../../State/reducers';
 import App from '../../App';
@@ -24,14 +24,18 @@ class PrismicWrapper extends Component {
 
     // get the index page from prismic data
     let indexPage = (data) => {
-      let index = {};
-      data.map( function( page ) {
+      data.map((page) => {
         if (page.slug === 'about') {
-          index = page;
+          return page;
         }
+        return '/';
       })
-      return index;
     }
+
+    // if we have results, then tell the app data was retrieved
+    // TODO
+    // turn this into a thunk / async call with different actions: CALLING_API, HIT_API, RECEIVED_DATA, API_ERROR, API_SUCCESS
+    // eslint-disable-next-line
     (prismic.results !== undefined) ? store.dispatch( dataRetrieved(prismic.results, loading, indexPage(prismic.results)) ) : '';
 
     //   let unsubscribe = store.subscribe(() =>

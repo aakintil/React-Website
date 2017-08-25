@@ -8,8 +8,8 @@ class App extends Component {
 
   render() {
     // props
+    // eslint-disable-next-line
     const { prismicData } = this.props;
-    console.log(prismicData)
     // const state = store.getState();
     // component
     return (
