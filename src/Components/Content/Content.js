@@ -33,23 +33,23 @@ class Content extends Component {
     const structurePageData = () => {
       // we have to go through an organize this data too
       let organizedPageData = {
-        slug: '',
-        callout: '',
-        category: '',
-        description: '',
-        title: '',
-        skilss: '',
-        processBlock: [
+        'slug': '',
+        'callout': '',
+        'category': '',
+        'description': '',
+        'title': '',
+        'skills': '',
+        'hero-images': [],
+        'process-block': [
           {
-            processType: '',
-            processTitle: '',
-            processCopy: ''
+            'process-type': '',
+            'process-title': '',
+            'process-copy': ''
           }
         ],
       }
     }
 
-    console.log( getActivePageData() );
 
     return (
       <div className="app-content">
@@ -59,12 +59,14 @@ class Content extends Component {
         </div>
 
         {/* // a shitty way to show the html in the values */}
-        <div className="callout" />
-        {/* dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} } */}
+        <div className="callout" // a shitty way to show the html in the values
+        dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} }
+      />
+
         <h5>description</h5>
         { page.getText('project-pages.description') }
         <h5>callout</h5>
-        { page.getStructuredText('project-pages.callout').asHtml()}
+        { page.getStructuredText('project-pages.title').asHtml()}
         <div/>
 
         <div className="description">

@@ -26,11 +26,12 @@
 
 .Header {
   width: 100%;
-  background: blue;
+  border-bottom: 1px solid white;
+  margin-bottom: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 156px;
 }
 
 .Header .logo {
