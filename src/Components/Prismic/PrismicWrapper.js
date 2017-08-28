@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom'
+
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { withQuery } from 'react-prismic';
@@ -33,14 +35,8 @@ class PrismicWrapper extends Component {
     }
 
     // if we have results, then tell the app data was retrieved
-    // TODO
-    // turn this into a thunk / async call with different actions: CALLING_API, HIT_API, RECEIVED_DATA, API_ERROR, API_SUCCESS
     // eslint-disable-next-line
     (prismic.results !== undefined) ? store.dispatch( dataRetrieved(prismic.results, loading, indexPage(prismic.results)) ) : '';
-
-    //   let unsubscribe = store.subscribe(() =>
-    //   console.log('unsubscribing the store state ', store.getState())
-    // );
 
     return (
       <div className="PrismicWrapper">
@@ -48,7 +44,9 @@ class PrismicWrapper extends Component {
           prismic.results &&
           // so that all children have access to store
           <Provider store={store}>
-            <App prismicData={prismic.results}/>
+            <BrowserRouter>
+              <App prismicData={prismic.results}/>
+            </BrowserRouter>
           </Provider>
         }
         {
