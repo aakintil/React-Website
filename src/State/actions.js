@@ -1,10 +1,15 @@
+import fetch from 'isomorphic-fetch'
+
+
 /*
 * action types
 */
 
 // set the active page
-export const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
 export const DATA_RETRIEVED = 'DATA_RETRIEVED';
+export const RECEIVED_POSTS = 'RECEIVED_POSTS';
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const SET_ACTIVE_PAGE = 'SET_ACTIVE_PAGE';
 
 
 // TODO
@@ -23,6 +28,23 @@ export const dataRetrieved = (data, loading, indexPage) => {
   }
 }
 
+
+function requestPosts(prismic) {
+  return {
+    type: REQUEST_POSTS,
+    prismic
+  }
+}
+
+
+function receivedPosts(prismic, json) {
+  return {
+    type: RECEIVED_POSTS,
+    prismic,
+    posts: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
+  }
+}
 
 export const setActivePage = (activePage) => {
   return {
