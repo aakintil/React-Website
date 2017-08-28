@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom'
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -44,9 +43,7 @@ class PrismicWrapper extends Component {
           prismic.results &&
           // so that all children have access to store
           <Provider store={store}>
-            <BrowserRouter>
-              <App prismicData={prismic.results}/>
-            </BrowserRouter>
+            <App prismicData={prismic.results}/>
           </Provider>
         }
         {
