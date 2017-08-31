@@ -7,6 +7,7 @@ import './App.css';
 class App extends Component {
 
   render() {
+
     // props
     // eslint-disable-next-line
     const { prismicData } = this.props;

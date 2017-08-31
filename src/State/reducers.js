@@ -15,6 +15,14 @@ const app = ( state = initialState, action ) => {
       indexPage: action.indexPage
     })
 
+    case 'HOME':
+    return Object.assign( {}, state, {
+      data: action.data,
+      location: action.payload.location,
+      slug: action.payload.slug,
+      payload: action.payload
+    })
+
     case 'GET_ACTIVE_PAGE_DATA':
     return Object.assign( {}, state, {
       activePageData: action.activePageData,

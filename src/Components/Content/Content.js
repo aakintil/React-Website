@@ -25,7 +25,7 @@ class Content extends Component {
       if ( document.slug === activePage ) {
         return document;
       }
-      return ''; 
+      return '';
     });
 
     // eslint-disable-next-line
@@ -99,7 +99,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     activePage: state.activePage,
-    data: state.data,
+    data: state.slug.data,
   }
 }
 

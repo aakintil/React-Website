@@ -59,9 +59,11 @@ const mapDispatchToProps = (dispatch) => {
 // have to make sure that components are 'listening' and know when state changes
 // collecting any variable / object within the state object
 const mapStateToProps = (state) => {
+  console.log('state to props ', state)
   return {
     activePage: state.activePage,
-    data: state.data,
+    data: state.slug.data, // apparently slug contains the data
+    slug: state.slug,
   }
 }
 
