@@ -1,10 +1,8 @@
-import 'babel-polyfill'
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PrismicWrapper from './Components/Prismic/PrismicWrapper';
+import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<PrismicWrapper/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

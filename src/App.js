@@ -1,29 +1,18 @@
 import React, { Component } from 'react';
-import Header from './Components/Header/Header';
-import Content from './Components/Content/Content';
+import logo from './logo.svg';
 import './App.css';
 
-
 class App extends Component {
-
   render() {
-
-    // props
-    // eslint-disable-next-line
-    const { prismicData } = this.props;
-    // const state = store.getState();
-    // component
     return (
       <div className="App">
-        <Header/>
-
-        {/*  make a component */}
-        <Content/>
-
-        {/*  make a component */}
-        <div className="app-footer">
-          <h5>footer</h5>
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
         </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
       </div>
     );
   }
