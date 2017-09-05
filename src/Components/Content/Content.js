@@ -56,27 +56,25 @@ class Content extends Component {
       <div className="app-content">
 
         <div className="title">
-          {page.data['project-pages.title'].value[0].text}
+          {/* {page.data['project-pages.title'].value[0].text} */}
         </div>
 
         {/* // a shitty way to show the html in the values */}
-        <div className="callout" // a shitty way to show the html in the values
-        dangerouslySetInnerHTML={ {__html: page.data['project-pages.callout'].value[0].text} }
-      />
+
 
       <h5>description</h5>
-      { page.getText('project-pages.description') }
+      {/* { page.getText('project-pages.description') } */}
       <h5>callout</h5>
-      { page.getStructuredText('project-pages.title').asHtml()}
+      {/* { page.getStructuredText('project-pages.title').asHtml()} */}
       <div/>
 
       <div className="description">
         <h5>description</h5>
-        {page.data['project-pages.description'].value[0].text}
+        {/* {page.data['project-pages.description'].value[0].text} */}
       </div>
 
       <div className="category">
-        {page.data['project-pages.category'].value[0].text}
+        {/* {page.data['project-pages.category'].value[0].text} */}
       </div>
 
     </div>

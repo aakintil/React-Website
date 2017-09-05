@@ -24,6 +24,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "redux-devtools": "^3.4.0"
   }
 }
