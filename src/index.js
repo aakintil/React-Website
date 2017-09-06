@@ -2,8 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import createHistory from 'history/createBrowserHistory';
 import registerServiceWorker from './registerServiceWorker';
-import createStore from './STATE/createStore';
+import createReduxStore from './STATE/createReduxStore';
+
+// Create the history object
+const history = createHistory();
+
+const store = createReduxStore(history);
+
+console.log(store)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
