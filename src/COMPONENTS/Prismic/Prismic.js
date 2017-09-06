@@ -17,22 +17,12 @@ const store = createReduxStore(history);
 class Prismic extends Component {
 
   render() {
-    const { prismic } = this.props;
-
-    // set the initial state once we've gotten data
-    const loading = false;
-
-    // (prismic.results !== undefined) ?  store.dispatch(
-    //   {
-    //     type: 'HOME',
-    //     payload: { slug: 'about' },
-    //     data: prismic.results
-    //   }) : '';
+    const { prismic, loading } = this.props;
 
       return (
         <div className="PrismicWrapper">
           {
-            prismic.results &&
+            !loading && prismic.results &&
             // so that all children have access to store
             <Provider store={store}>
               <App prismicData={prismic.results}/>
