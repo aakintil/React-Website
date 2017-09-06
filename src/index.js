@@ -11,7 +11,7 @@ const history = createHistory();
 
 const store = createReduxStore(history);
 
-console.log(store)
+console.log(store.getState())
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

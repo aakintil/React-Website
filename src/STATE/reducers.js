@@ -1,42 +1,18 @@
-const initialState = {
-  data: '',
-  loading: true,
-  indexPage: 'about',
-  activePage: 'about'
-}
+import { combineReducers } from 'redux';
 
-const appReducers = ( state = initialState, action ) => {
-
-  switch( action.type ) {
-    case 'DATA_RETRIEVED':
-    return Object.assign( {}, state, {
-      data: action.data,
-      loading: action.loading,
-      indexPage: action.indexPage
-    })
-
-    case 'HOME':
-    return Object.assign( {}, state, {
-      data: action.data,
-      location: action.payload.location,
-      slug: action.payload.slug,
-      payload: action.payload
-    })
-
-    case 'GET_ACTIVE_PAGE_DATA':
-    return Object.assign( {}, state, {
-      activePageData: action.activePageData,
-    })
-
-    case 'SET_ACTIVE_PAGE':
-    return Object.assign( {}, state, {
-      activePage: action.activePage,
-    })
+// Import your state reducer modules and add them to the root reducer
+import initialReducer from './reducers/initial';
+import dataRetrievedReducer from './reducers/dataRetrieved';
+import pageReducers from './reducers/page';
 
 
-    default:
-    return state;
-  }
-}
+const combiningReducers = ( reduxReducer ) => {
+  return combineReducers({
+    location: reduxReducer,
+    initialReducer,
+    dataRetrievedReducer,
+    pageReducers
+  })
+};
 
-export default appReducers;
+export default combiningReducers;

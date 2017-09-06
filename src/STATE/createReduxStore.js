@@ -1,9 +1,9 @@
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { connectRoutes } from 'redux-first-router';
 
 // TODO we have to go back and separate the reducers
-import appReducers from './reducers';
+import combiningReducers from './reducers';
 
 // routes mapping
 const routesMap = {
@@ -17,17 +17,15 @@ const createReduxStore = (history) => {
   const { reducer, middleware, enhancer } = connectRoutes( history, routesMap ); // 3 redux aspects
 
   // create the root reducer
-  const rootReducer = combineReducers({location: reducer, pageSlug: appReducers });
+  const rootReducer = combiningReducers(reducer)// combineReducers({location: reducer, pageSlug: appReducers });
 
   // create middleware
   // TODO figure out what to do with middleware
   const middlewares = applyMiddleware(middleware);
 
-  // using a fallback if extensions aren't installed, then use Redux compose
-  const composeEnhancers = composeWithDevTools(); 
-
-  // note the order: enhancer, then middlewares
-  return createStore(rootReducer, composeEnhancers(compose(enhancer, middlewares)));
+  // note the order: enhancer, then middlewares.
+  // but be aware || we need dev tools right now
+  return createStore(rootReducer, composeWithDevTools(enhancer, middlewares));
 }
 
 export default createReduxStore;
