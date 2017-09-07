@@ -25,7 +25,7 @@ class Prismic extends Component {
             !loading && prismic.results &&
             // so that all children have access to store
             <Provider store={store}>
-              <App prismicData={prismic.results}/>
+              <h5> trying to fix it... </h5>{/* <App prismicData={prismic.results}/> */}
             </Provider>
           }
           {
@@ -38,7 +38,10 @@ class Prismic extends Component {
     }
   }
 
-  export default withQuery({
+  const prismicWrapper = withQuery({
     url: 'https://aderinsola.prismic.io/api',
     query: ["", {}]
   })(Prismic);
+
+
+  export default prismicWrapper;

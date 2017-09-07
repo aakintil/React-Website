@@ -5,7 +5,6 @@ const initialState = {
 }
 
 const dataRetrievedReducer = ( state = initialState, action ) => {
-
   switch( action.type ) {
     case 'DATA_RETRIEVED':
     return Object.assign( {}, state, {
