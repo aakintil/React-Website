@@ -13,11 +13,6 @@ class App extends Component {
     dataRetrieved: PropTypes.func,
   }
 
-  componentDidMount = () => {
-    // create a function that sets the data in state
-    dataRetrieved(this.props.prismicData, false, 'about');
-  }
-
   render() {
 
     const { prismicData } = this.props;
@@ -36,12 +31,9 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (page) => {
-      dispatch(setActivePage(page));
-    },
-    dataRetrieved: (data, loading, indexPage) => {
-      dispatch(dataRetrieved(data, loading, indexPage));
-    }
+    // collectPageData: (slug) => {
+    //   dispatch(collectPageData(slug));
+    // }
   }
 }
 
@@ -50,9 +42,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   console.log('state to props ', state)
   return {
-    activePage: '',//state.activePage,
-    data: '',//state.slug.data, // apparently slug contains the data
-    slug: ''//state.slug,
+    activePage: state.pages.payload.slug
   }
 }
 

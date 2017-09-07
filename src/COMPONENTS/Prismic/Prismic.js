@@ -15,33 +15,42 @@ const store = createReduxStore(history);
 
 // -- PRISMIC COMPONENT CLASS
 class Prismic extends Component {
+  componentWillReceiveProps = (nextProps) => {
+    // Load new data when the dataSource property changes.
+    console.log("component will receive next props", nextProps);
+    console.log("this.props", this.props);
+    // dataRetrieved(this.props.prismicData, false, 'about');
+    // if (nextProps.dataSource != this.props.dataSource) {
+    //   this.loadData(nextProps.dataSource);
+    // }
+  }
 
   render() {
     const { prismic, loading } = this.props;
 
-      return (
-        <div className="PrismicWrapper">
-          {
-            !loading && prismic.results &&
-            // so that all children have access to store
-            <Provider store={store}>
-              <h5> trying to fix it... </h5>{/* <App prismicData={prismic.results}/> */}
-            </Provider>
-          }
-          {
-            // have to build a better loading screen / animation screen
-            !prismic.results &&
-            <h1>loading...</h1>
-          }
-        </div>
-      );
-    }
+    return (
+      <div className="PrismicWrapper">
+        {
+          !loading && prismic.results &&
+          // so that all children have access to store
+          <Provider store={store}>
+            <App prismicData={prismic.results}/>
+          </Provider>
+        }
+        {
+          // have to build a better loading screen / animation screen
+          !prismic.results &&
+          <h1>loading...</h1>
+        }
+      </div>
+    );
   }
+}
 
-  const prismicWrapper = withQuery({
-    url: 'https://aderinsola.prismic.io/api',
-    query: ["", {}]
-  })(Prismic);
+const prismicWrapper = withQuery({
+  url: 'https://aderinsola.prismic.io/api',
+  query: ["", {}]
+})(Prismic);
 
 
-  export default prismicWrapper;
+export default prismicWrapper;
